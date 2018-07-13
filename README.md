@@ -3,6 +3,18 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflection
+
+### Describe the effect each of the P, I, D components had in your implementation.
+P is the proprotional tuning parameter. Large P will result in quick reponse to the CTE, but will causing oscillation at the same time.
+D is the derivative parameter. It will help reduce the overcorrects effect.
+I is the integral parameter. It removes the bias of the car.
+
+### Describe how the final hyperparameters were chosen.
+I implement the twiddle algorithm in a state machine style. But I found the simulator is just too slow to run the algorithm. One lap will take about a minute. So the tuning process is too slow.
+So I tried to tune the parameters by hand. I search the P in range of [0.5 1.5], and D in range of [1 5]. 0.1 per step. Leave the I as 0. The final parameter I chose is 0.9, 0, 1.7.
+Although the car is able to run the whole track without crash itself, I think there should be a smarter way to tunning the parameters.
+
 ## Dependencies
 
 * cmake >= 3.5
